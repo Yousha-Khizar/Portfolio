@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yousha Khizar | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --panel-2: #1f2937;
+      --text: #e6edf3;
+      --muted: #9da7b3;
+      --accent: #58a6ff;
+      --border: #30363d;
+      --success: #3fb950;
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #0d1117 0%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(13, 17, 23, 0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 72px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .card {
+      background: rgba(22, 27, 34, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--success);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.95rem;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 18px; }
+    h3 { font-size: 1.1rem; }
+
+    p { margin: 0 0 14px; color: var(--text); }
+    .muted { color: var(--muted); }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+      border-color: var(--accent);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #08111a;
+      border-color: transparent;
+    }
+
+    .terminal {
+      background: #0b1220;
+      border-radius: 18px;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: #111827;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #6b7280;
+    }
+
+    .terminal-body {
+      padding: 18px;
+      color: #7ee787;
+      font-size: 0.93rem;
+      white-space: pre-wrap;
+    }
+
+    section {
+      padding: 18px 0 8px;
+    }
+
+    .grid-2, .grid-3 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      background: #0b1220;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .resume-item + .resume-item {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    footer {
+      padding: 40px 0 60px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">Yousha Khizar</div>
+        <div class="nav-links">
+          <a href="#about">Über mich</a>
+          <a href="#skills">Kenntnisse</a>
+          <a href="#projects">Projekte</a>
+          <a href="#resume">Lebenslauf</a>
+          <a href="#contact">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <span class="eyebrow">yousha@portfolio:~$ whoami</span>
+          <h1>Fachinformatiker für Anwendungsentwicklung mit Fokus auf Software, Web und KI.</h1>
+          <p class="muted">
+            Ich befinde mich aktuell in einer Umschulung zum Fachinformatiker für Anwendungsentwicklung und suche eine betriebliche Praxisphase, in der ich meine Kenntnisse in der Softwareentwicklung praktisch vertiefen und aktiv in reale Projekte einbringen kann.
+          </p>
+          <div class="button-row">
+            <a class="btn primary" href="https://github.com/Yousha-Khizar" target="_blank" rel="noreferrer">GitHub ansehen</a>
+            <a class="btn" href="#resume">Zum Lebenslauf</a>
+            <a class="btn" href="./Yousha_Khizar_Lebenslauf.pdf">CV als PDF</a>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-top">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <div class="terminal-body">$ whoami
+Yousha Khizar
+
+$ role
+Fachinformatiker für Anwendungsentwicklung
+
+$ stack
+C#, Python, ASP.NET, HTML, CSS, JavaScript, SQL
+
+$ focus
+Softwareentwicklung, Webanwendungen, KI, ML
+
+$ status
+Suche betriebliche Praxisphase</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="card">
+        <h2>Über mich</h2>
+        <p>
+          Ich interessiere mich besonders für die Entwicklung strukturierter Anwendungen, das Zusammenspiel von Backend und Frontend und die praktische Umsetzung eigener Softwareprojekte. Langfristig möchte ich mich im Bereich Künstliche Intelligenz und Machine Learning weiterentwickeln.
+        </p>
+        <p>
+          Neben der Umschulung setze ich eigene Projekte um und dokumentiere meine Arbeit auf GitHub. Dazu gehören unter anderem eine Webanwendung zur Verarbeitung und Visualisierung von Telemetriedaten sowie ein KI-Projekt zur Klassifikation von Pflanzenbildern.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Kenntnisse</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Technologien</h3>
+          <div class="tags">
+            <span class="tag">C#</span>
+            <span class="tag">Python</span>
+            <span class="tag">ASP.NET</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Git</span>
+            <span class="tag">Linux Grundlagen</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Schwerpunkte</h3>
+          <ul class="clean">
+            <li>Objektorientierte Programmierung</li>
+            <li>Strukturierte Softwareentwicklung</li>
+            <li>Webentwicklung mit ASP.NET</li>
+            <li>Datenbanken und Datenverarbeitung</li>
+            <li>Netzwerktechnik-Grundlagen</li>
+            <li>WISO und VWL im Ausbildungskontext</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projekte</h2>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Mission Telemetry</h3>
+          <p class="muted">Webanwendung</p>
+          <ul class="clean">
+            <li>Visualisierung und Verwaltung von Telemetriedaten</li>
+            <li>Implementierung einer REST-API mit ASP.NET</li>
+            <li>Datenverarbeitung und Fehleranalyse</li>
+            <li>Frontend mit HTML, CSS und JavaScript</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Plant Vision AI</h3>
+          <p class="muted">Teamprojekt / Machine Learning</p>
+          <ul class="clean">
+            <li>Entwicklung eines KI-Modells zur Klassifikation von Pflanzenbildern</li>
+            <li>Einsatz eines ResNet-Modells (Transfer Learning)</li>
+            <li>Klassifikation von ca. 250 Pflanzenarten</li>
+            <li>Zusammenarbeit im Team bei Entwicklung und Testing</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>Lebenslauf</h2>
+      <div class="card resume-item">
+        <h3>Profil</h3>
+        <p>Angehender Fachinformatiker für Anwendungsentwicklung im Rahmen einer Umschulung mit Schwerpunkt auf moderner Softwareentwicklung und Webtechnologien.</p>
+      </div>
+      <div class="card resume-item">
+        <h3>Ausbildung</h3>
+        <p><strong>Fachinformatiker für Anwendungsentwicklung (IHK) – Umschulung</strong><br>Lutz &amp; Grub<br>02/2025 – voraussichtlich 02/2027</p>
+        <ul class="clean">
+          <li>Konzeption und Entwicklung praxisnaher Softwarelösungen mit C# und Python</li>
+          <li>Planung und Umsetzung von Webanwendungen mit ASP.NET und Frontend-Technologien</li>
+          <li>Analyse und Verwaltung relationaler Datenbanken mit SQL</li>
+          <li>Umgang mit Linux-Betriebssystemen, Terminal und grundlegenden Systembefehlen</li>
+          <li>Kenntnisse in WISO und VWL sowie Vorbereitung auf die IHK-Abschlussprüfung</li>
+        </ul>
+      </div>
+      <div class="card resume-item">
+        <h3>Berufserfahrung</h3>
+        <p><strong>Bruno Bader GmbH + Co. KG – Logistikmitarbeiter / Vorarbeiter</strong><br>11/2018 – 06/2024</p>
+        <p><strong>Bundeswehr – Grundausbildung</strong><br>03/2018 – 05/2018</p>
+        <p><strong>Gastronomie – Service / Bar (Nebenjob)</strong><br>05/2016 – 02/2018</p>
+      </div>
+      <div class="card resume-item">
+        <h3>Zertifikate</h3>
+        <ul class="clean">
+          <li>GPM Basiszertifikat (Projektmanagement)</li>
+          <li>Scrum Master Zertifikat</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="card">
+        <h2>Kontakt</h2>
+        <p>E-Mail: <a href="mailto:khizaryousha@gmail.com">khizaryousha@gmail.com</a><br>
+        Telefon: <a href="tel:+4917635896227">0176 35896227</a><br>
+        GitHub: <a href="https://github.com/Yousha-Khizar" target="_blank" rel="noreferrer">github.com/Yousha-Khizar</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Gebaut für GitHub Pages · Portfolio von Yousha Khizar
+    </div>
+  </footer>
+</body>
+</html>
